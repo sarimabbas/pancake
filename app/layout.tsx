@@ -2,6 +2,7 @@ import { GeistSans } from "geist/font/sans";
 import { Inter as FontSans } from "next/font/google";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/react";
 
 import { cn } from "@/lib/utils";
 import Providers from "./providers";
@@ -37,6 +38,7 @@ export default function RootLayout({
         <Providers>
           <main className="flex flex-col items-center min-h-screen">
             {children}
+            <Analytics />
           </main>
         </Providers>
       </body>
