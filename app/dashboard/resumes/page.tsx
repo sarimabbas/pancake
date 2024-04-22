@@ -11,16 +11,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import Haikunator from "haikunator";
 import { format } from "date-fns";
 import Link from "next/link";
+import { getResumes } from "./_lib/operation";
 
 const haikunator = new Haikunator();
-
-export const getResumes = async (s: SupabaseClient<Database>) => {
-  const response = await s
-    .from("resumes")
-    .select("*")
-    .order("created_at", { ascending: false });
-  return response.data;
-};
 
 export default function ResumesPage() {
   const supabase = createClient();

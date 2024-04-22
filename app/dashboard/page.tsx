@@ -2,9 +2,9 @@
 
 import { Button } from "@/components/ui/button";
 import { createClient } from "@/utils/supabase/client";
-import Link from "next/link";
-import { getResumes } from "./resumes/page";
 import { useQuery } from "@tanstack/react-query";
+import Link from "next/link";
+import { getResumes } from "./resumes/_lib/operation";
 
 export default function DashboardPage() {
   const supabase = createClient();

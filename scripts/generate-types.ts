@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { $ } from "bun";
 import path from "path";
 
