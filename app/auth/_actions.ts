@@ -30,9 +30,13 @@ export const forgotPasswordAction = async (formData: FormData) => {
     );
   }
 
+  const redirectUrl = process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}/auth/reset`
+    : "http://localhost:3000/auth/reset";
+
   const supabase = createClient();
   const { error } = await supabase.auth.resetPasswordForEmail(email, {
-    redirectTo: "http://localhost:3000/auth/reset",
+    redirectTo: redirectUrl,
   });
 
   if (error) {
