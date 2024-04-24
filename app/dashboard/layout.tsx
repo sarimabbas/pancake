@@ -1,5 +1,4 @@
 import { NavLink } from "@/components/NavLink";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -20,13 +19,10 @@ import { User } from "@supabase/auth-js";
 import {
   CircleUser,
   FileText,
-  GalleryVerticalEnd,
   Home,
   Layers,
   Menu,
-  Package,
-  Package2,
-  ShoppingCart,
+  MessageCircle,
 } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -152,7 +148,7 @@ function UserButton({ user }: { user: User }) {
 
 function Navigation() {
   return (
-    <nav className="grid items-start px-2 text-sm font-medium lg:px-4">
+    <nav className="flex flex-col gap-1 p-2 text-sm font-medium h-full">
       <NavLink
         href="/dashboard"
         title="Dashboard"
@@ -167,6 +163,12 @@ function Navigation() {
         href="/dashboard/resumes"
         title="Resumes"
         icon={<FileText className="w-4 h-4" />}
+      />
+      <NavLink
+        className="mt-auto"
+        href="https://pancake.featurebase.app"
+        title="Feedback"
+        icon={<MessageCircle className="w-4 h-4" />}
       />
     </nav>
   );

@@ -2,16 +2,17 @@
 
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 interface NavLinkProps {
   icon: React.ReactNode;
   title: string;
   href: string;
+  className?: string;
 }
 
 export const NavLink = (props: NavLinkProps) => {
-  const { icon, href, title } = props;
+  const { icon, href, title, className } = props;
   const pathname = usePathname();
 
   return (
@@ -22,7 +23,8 @@ export const NavLink = (props: NavLinkProps) => {
         {
           "bg-muted": pathname === href,
           "text-primary": pathname === href,
-        }
+        },
+        className
       )}
     >
       {icon}
