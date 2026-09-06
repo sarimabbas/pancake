@@ -30,7 +30,7 @@ import React from "react";
 import { signOutAction } from "../auth/_actions";
 
 const Layout = async ({ children }: { children: React.ReactNode }) => {
-  const supabase = createClient();
+  const supabase = await createClient();
 
   const {
     data: { user },

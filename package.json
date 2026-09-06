@@ -7,7 +7,10 @@
     "start": "next start",
     "lint": "next lint",
     "check-updates": "bunx npm-check-updates --root --format group -i",
-    "generate-types": "bun run ./scripts/generate-types.ts"
+    "generate-types": "bun run ./scripts/generate-types.ts",
+    "build:worker": "opennextjs-cloudflare build",
+    "deploy": "opennextjs-cloudflare deploy",
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview"
   },
   "dependencies": {
     "@blocknote/core": "^0.12.4",
@@ -45,7 +48,6 @@
     "@supabase/ssr": "latest",
     "@supabase/supabase-js": "^2.42.5",
     "@tanstack/react-query": "^5.29.2",
-    "@vercel/analytics": "^1.2.2",
     "ai": "^3.0.24",
     "autoprefixer": "10.4.19",
     "class-variance-authority": "^0.7.0",
@@ -59,7 +61,7 @@
     "input-otp": "^1.2.4",
     "jsonresume-theme-even": "^0.22.0",
     "lucide-react": "^0.372.0",
-    "next": "14.2.2",
+    "next": "15.5.25",
     "next-themes": "^0.3.0",
     "openai": "^4.38.2",
     "postcss": "8.4.38",
@@ -76,7 +78,8 @@
     "typescript": "5.4.5",
     "use-debounce": "^10.0.0",
     "vaul": "^0.9.0",
-    "zod": "^3.23.0"
+    "zod": "^3.23.0",
+    "@opennextjs/cloudflare": "1.20.6"
   },
   "devDependencies": {
     "@tanstack/eslint-plugin-query": "^5.28.11",
@@ -86,10 +89,12 @@
     "@types/react": "18.2.79",
     "@types/react-dom": "18.2.25",
     "encoding": "^0.1.13",
-    "eslint-config-next": "^14.2.2",
-    "supabase": "^1.162.4"
+    "supabase": "^1.162.4",
+    "wrangler": "4.129.0",
+    "eslint-config-next": "15.5.25"
   },
   "trustedDependencies": [
     "core-js"
-  ]
+  ],
+  "packageManager": "bun@1.3.14"
 }

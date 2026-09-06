@@ -21,7 +21,7 @@ Keep a personal changelog. Get AI generated JSON resumes.
   - Supabase Auth
   - Supabase Database with RLS
 - Next.js
-  - Deployed on Vercel
+  - Deployed on Cloudflare Workers
   - Vercel AI SDK
   - ShadCN
   - Tailwind CSS
@@ -40,4 +40,22 @@ Keep a personal changelog. Get AI generated JSON resumes.
 
 ## Demo
 
-An instance is hosted here: <https://pancake-bio.vercel.app/>
+An instance is hosted here: <https://pancake.sarimabbas.workers.dev/>
+
+## Cloudflare hosting
+
+Cloudflare Workers Builds deploys `main` to the Sarim account.
+Node 22.16.0 and Bun 1.3.14 are pinned. Build with `bun run build:worker`,
+then deploy the generated bundle with `bun run deploy`.
+
+Build variables: `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`,
+`NEXT_PUBLIC_SITE_URL` (`https://pancake.sarimabbas.workers.dev`).
+The Supabase settings are also configured at runtime, alongside the encrypted
+`OPENAI_API_KEY` secret. The optional example assistant endpoint additionally
+requires `ASSISTANT_ID`; it was not configured on Vercel.
+
+The existing Supabase project is paused and cannot be resumed in place.
+This migration moves hosting only: login, saved data, and resume generation
+require restoring the database separately. After restoration, update both build
+and runtime Supabase settings and allow the new site's `/auth/callback` URL in
+Supabase Auth. No database data was changed by this migration.
