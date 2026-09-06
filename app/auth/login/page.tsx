@@ -14,9 +14,10 @@ import { signInWithGithub } from "../_actions";
 export default async function Login({
   searchParams,
 }: {
-  searchParams: { message: string };
+  searchParams: Promise<{ message: string }>;
 }) {
-  const supabase = createClient();
+  const { message } = await searchParams;
+  const supabase = await createClient();
   const { data } = await supabase.auth.getUser();
   if (data?.user) {
     redirect("/dashboard");
@@ -56,9 +57,9 @@ export default async function Login({
         <CardContent>
           <form className="grid gap-4">
             <Button formAction={signInWithGithub}>GitHub</Button>
-            {searchParams?.message && (
+            {message && (
               <p className="p-4 mt-4 text-sm text-center rounded-md bg-foreground/5 text-foreground">
-                {searchParams.message}
+                {message}
               </p>
             )}
           </form>

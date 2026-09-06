@@ -2,7 +2,6 @@ import { GeistSans } from "geist/font/sans";
 import { Inter as FontSans } from "next/font/google";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/react";
 
 import { cn } from "@/lib/utils";
 import Providers from "./providers";
@@ -12,9 +11,7 @@ const fontSans = FontSans({
   variable: "--font-sans",
 });
 
-const defaultUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : "http://localhost:3000";
+const defaultUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
 export const metadata = {
   metadataBase: new URL(defaultUrl),
@@ -38,7 +35,6 @@ export default function RootLayout({
         <Providers>
           <main className="flex flex-col items-center min-h-screen">
             {children}
-            <Analytics />
           </main>
         </Providers>
       </body>

@@ -14,7 +14,7 @@ import { Message } from "ai";
 export default function ResumeSlugPage() {
   const supabase = createClient();
   const queryClient = useQueryClient();
-  const { slug } = useParams();
+  const { slug } = useParams<{ slug: string }>();
   const { messages, input, handleInputChange, handleSubmit, isLoading } =
     useChat();
 

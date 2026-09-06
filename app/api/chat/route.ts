@@ -2,18 +2,15 @@ import OpenAI from "openai";
 import { OpenAIStream, StreamingTextResponse } from "ai";
 import { createClient } from "@/utils/supabase/server";
 
-// Create an OpenAI API client (that's edge friendly!)
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
-
-// Set the runtime to edge for best performance
-export const runtime = "edge";
-
 export async function POST(req: Request) {
+  // Read the Worker runtime secret when handling a request.
+  const openai = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY,
+  });
+
   const { messages } = await req.json();
 
-  const supabase = createClient();
+  const supabase = await createClient();
 
   const timelineEntriesResponse = await supabase.from("timeline").select("*");
   const timelineEntries = timelineEntriesResponse.data

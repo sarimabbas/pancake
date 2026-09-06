@@ -1,14 +1,6 @@
 import { AssistantResponse } from "ai";
 import OpenAI from "openai";
 
-// Create an OpenAI API client (that's edge friendly!)
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY || "",
-});
-
-// IMPORTANT! Set the runtime to edge
-export const runtime = "edge";
-
 const homeTemperatures = {
   bedroom: 20,
   "home office": 21,
@@ -18,6 +10,11 @@ const homeTemperatures = {
 };
 
 export async function POST(req: Request) {
+  // Read the Worker runtime secret when handling a request.
+  const openai = new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY || "",
+  });
+
   // Parse the request body
   const input: {
     threadId: string | null;

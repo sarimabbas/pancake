@@ -36,3 +36,8 @@ yarn-error.log*
 next-env.d.ts
 
 .env
+
+# Cloudflare build output and local secrets
+.open-next/
+.wrangler/
+.dev.vars*
